@@ -23,6 +23,9 @@ services:
     volumes:
       - ./data:/app/data
       - ./src:/app/src
+ cursor/bc-f408c7bd-bc2a-48a4-bc8d-0989f628ad52-ef2e
+
+
 
   julia:
     build:

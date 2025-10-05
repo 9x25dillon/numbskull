@@ -20,7 +20,9 @@ class ALULS:
         return {"name": name.upper(), "args": args}
 
     async def health(self) -> Dict[str, Any]:
+cursor/bc-f408c7bd-bc2a-48a4-bc8d-0989f628ad52-ef2e
         # Only HTTP has /health; use it as liveness check
+ 
         return await al_uls_client.health()
 
     async def eval_symbolic_call_async(self, call: Dict[str, Any]) -> Dict[str, Any]:
@@ -34,7 +36,9 @@ class ALULS:
     async def batch_eval_symbolic_calls(self, calls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         if PREFER_WS:
             res = await al_uls_ws_client.batch_eval(calls)
+cursor/bc-f408c7bd-bc2a-48a4-bc8d-0989f628ad52-ef2e
             # If any valid item present, accept; else fallback
+
             if isinstance(res, list) and any(isinstance(r, dict) for r in res):
                 return res
         return await al_uls_client.batch_eval(calls)

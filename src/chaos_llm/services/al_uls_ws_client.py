@@ -53,6 +53,7 @@ class ALULSWSClient:
             ws = await self.connect()
             await ws.send(json.dumps(payload))
             resp = await ws.recv()
+cursor/bc-f408c7bd-bc2a-48a4-bc8d-0989f628ad52-ef2e
             # Server may wrap results, standardize here
             data = json.loads(resp)
             if isinstance(data, dict) and "result" in data and "type" in data:
@@ -62,6 +63,8 @@ class ALULSWSClient:
                 if data.get("type") == "parse_result":
                     return data
             return data
+            return json.loads(resp)
+
         except Exception as e:
             # Reset socket on error to force reconnect later
             try:
