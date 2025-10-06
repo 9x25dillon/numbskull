@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Any, Dict, List
 from .services.qgi import api_suggest, api_suggest_async
-cursor/bc-f408c7bd-bc2a-48a4-bc8d-0989f628ad52-ef2e
 from .services.retrieval import ingest_texts, search
 from .services.unitary_mixer import route_mixture, choose_route
 
@@ -39,9 +38,6 @@ class BatchSymbolicRequest(BaseModel):
 
 @app.get("/")
 async def root() -> Dict[str, Any]:
-cursor/bc-f408c7bd-bc2a-48a4-bc8d-0989f628ad52-ef2e
-    return {"ok": True, "service": "Chaos LLM MVP"}
-
     return {"ok": True, "service": "Chaos LLM MVP", "version": "0.4.0"}
 
 
@@ -58,9 +54,6 @@ async def batch_symbolic(payload: BatchSymbolicRequest) -> Dict[str, Any]:
 async def suggest(payload: SuggestRequest) -> SuggestResponse:
     result = await api_suggest_async(prefix=payload.prefix, state=payload.state, use_semantic=payload.use_semantic) if payload.async_eval \
              else api_suggest(prefix=payload.prefix, state=payload.state, use_semantic=payload.use_semantic)
-cursor/bc-f408c7bd-bc2a-48a4-bc8d-0989f628ad52-ef2e
-    return SuggestResponse(suggestions=result["suggestions"], qgi=result["qgi"]) 
-
     mixture = route_mixture(result["qgi"]) ; route = choose_route(mixture)
     result["qgi"].setdefault("retrieval_routes", []).append(route)
     return SuggestResponse(suggestions=result["suggestions"], qgi=result["qgi"], mixture=mixture, route=route)
