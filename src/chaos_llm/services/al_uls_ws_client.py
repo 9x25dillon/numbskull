@@ -63,7 +63,9 @@ class ALULSWSClient:
             if isinstance(data, dict) and "result" in data and "type" in data:
                 if data.get("type") == "eval_result":
                     return data.get("result", data)
-                if data.get("type") == "parse_result":
+                if t == "parse_result":
+                    return data
+                if t == "batch_eval_result" and "results" in data:
                     return data
             return data
         except Exception as e:

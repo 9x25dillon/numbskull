@@ -40,6 +40,7 @@ class NSKBatchRequest(BaseModel):
 
 @app.get("/")
 async def root() -> Dict[str, Any]:
+    return {"ok": True, "service": "Chaos LLM MVP", "version": "0.4.0"}
     return {"ok": True, "service": app.title, "version": app.version}
 
 
