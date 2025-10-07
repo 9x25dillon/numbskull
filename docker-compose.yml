@@ -12,6 +12,10 @@ services:
       - ALULS_PREFER_WS=1
       - ALULS_HTTP_TTL=30
       - ALULS_WS_TTL=30
+      - NUMBSKULL_HTTP_URL=http://numbskull:9090
+      - NUMBSKULL_WS_URL=ws://numbskull:9091
+      - NUMBSKULL_PREFER_WS=1
+      - NUMBSKULL_TTL=30
     depends_on:
       julia:
         condition: service_healthy
@@ -23,6 +27,10 @@ services:
     volumes:
       - ./data:/app/data
       - ./src:/app/src
+ cursor/bc-f408c7bd-bc2a-48a4-bc8d-0989f628ad52-ef2e
+
+
+
   julia:
     build:
       context: .
@@ -31,5 +39,14 @@ services:
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:8088/health"]
       interval: 10s
+      timeout: 5s
+      retries: 10
+
+  numbskull:
+    image: numbskull/tools:latest
+    ports: ["9090:9090", "9091:9091"]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:9090/health"]
+      interval: 15s
       timeout: 5s
       retries: 10

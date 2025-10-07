@@ -7,6 +7,7 @@ import websockets
 JULIA_WS_URL = os.environ.get("JULIA_WS_URL", "ws://localhost:8089")
 CACHE_TTL_WS = float(os.environ.get("ALULS_WS_TTL", 30))
 
+
 class TTLCacheWS:
     def __init__(self, ttl: float):
         self.ttl = ttl
@@ -24,18 +25,22 @@ class TTLCacheWS:
         k = self._key(name, args)
         v = self._store.get(k)
         if not v:
-            self.misses += 1; return None
+            self.misses += 1
+            return None
         ts, data = v
         if self._now() - ts <= self.ttl:
-            self.hits += 1; return data
+            self.hits += 1
+            return data
         self._store.pop(k, None)
-        self.misses += 1; return None
+        self.misses += 1
+        return None
 
     def set(self, name: str, args: List[str], value: Dict[str, Any]) -> None:
         self._store[self._key(name, args)] = (self._now(), value)
 
     def stats(self) -> Dict[str, Any]:
         return {"entries": len(self._store), "hits": self.hits, "misses": self.misses, "ttl": self.ttl}
+
 
 class ALULSWSClient:
     def __init__(self, ws_url: str | None = None):
@@ -53,7 +58,16 @@ class ALULSWSClient:
             ws = await self.connect()
             await ws.send(json.dumps(payload))
             resp = await ws.recv()
-            return json.loads(resp)
+            data = json.loads(resp)
+            # Server may wrap results, standardize here
+            if isinstance(data, dict) and "result" in data and "type" in data:
+                if data.get("type") == "eval_result":
+                    return data.get("result", data)
+                if t == "parse_result":
+                    return data
+                if t == "batch_eval_result" and "results" in data:
+                    return data
+            return data
         except Exception as e:
             # Reset socket on error to force reconnect later
             try:
@@ -76,17 +90,15 @@ class ALULSWSClient:
         return res
 
     async def batch_eval(self, calls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        # try a single WS roundtrip; if it fails or invalid, fall back per-call
         res = await self._roundtrip({"type": "batch_eval", "calls": calls})
         if isinstance(res, dict) and "results" in res and isinstance(res["results"], list):
-            # populate cache for successes
             out: List[Dict[str, Any]] = []
             for c, r in zip(calls, res["results"]):
                 if isinstance(r, dict) and r.get("ok"):
                     self.cache.set(c.get("name", ""), c.get("args", []), r)
                 out.append(r if isinstance(r, dict) else {"ok": False, "error": "invalid item"})
             return out
-        # fallback: per-call
         return [await self.eval(c.get("name", ""), c.get("args", [])) for c in calls]
+
 
 al_uls_ws_client = ALULSWSClient()
