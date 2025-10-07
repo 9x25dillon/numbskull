@@ -57,7 +57,6 @@ async def batch_symbolic(payload: BatchSymbolicRequest) -> Dict[str, Any]:
 
 @app.post("/suggest", response_model=SuggestResponse)
 async def suggest(payload: SuggestRequest) -> SuggestResponse:
-
     result = (
         await api_suggest_async(prefix=payload.prefix, state=payload.state, use_semantic=payload.use_semantic)
         if payload.async_eval
@@ -65,7 +64,6 @@ async def suggest(payload: SuggestRequest) -> SuggestResponse:
     )
     mixture = route_mixture(result["qgi"])  # type: ignore[arg-type]
     route = choose_route(mixture)
-
     result["qgi"].setdefault("retrieval_routes", []).append(route)
     return SuggestResponse(suggestions=result["suggestions"], qgi=result["qgi"], mixture=mixture, route=route)
 
