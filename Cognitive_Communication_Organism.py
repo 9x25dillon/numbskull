@@ -105,57 +105,114 @@ class CommunicationContext:
 
 class QuantumInspiredOptimizer:
     """Quantum-inspired optimization for cognitive network parameters"""
-
+    
     def __init__(self, num_qubits: int = 10):
         self.num_qubits = num_qubits
         self.quantum_state = self._initialize_quantum_state()
-
+        # Enhanced with cypher-aligned mathematical abstractions
+        self.omega_space = self._initialize_omega_space()
+        self.psi_operators = self._initialize_psi_operators()
+        self.kappa_ein = 0.0  # Phase/cost parameter from cypher notation
+        
     def _initialize_quantum_state(self) -> np.ndarray:
         """Initialize in superposition state"""
         state = np.ones(2 ** self.num_qubits) / np.sqrt(2 ** self.num_qubits)
         return state
+    
+    def _initialize_omega_space(self) -> np.ndarray:
+        """Initialize omega space for ∀ω ∈ Ω mappings"""
+        return np.random.uniform(-1, 1, (2 ** self.num_qubits, self.num_qubits))
+    
+    def _initialize_psi_operators(self) -> Dict[str, np.ndarray]:
+        """Initialize psi operators for quantum state manipulation"""
+        return {
+            'nabla': np.random.normal(0, 0.1, (self.num_qubits, self.num_qubits)),
+            'circlearrowright': np.random.normal(0, 0.1, (self.num_qubits, self.num_qubits)),
+            'bowtie': np.random.normal(0, 0.1, (self.num_qubits, self.num_qubits))
+        }
 
     def quantum_annealing_optimization(self, cost_function, max_iter: int = 1000) -> Dict:
-        """Quantum annealing for parameter optimization"""
+        """Quantum annealing for parameter optimization with cypher-aligned operations"""
         best_solution = None
         best_cost = float('inf')
-
+        
+        # Initialize with cypher notation: ∀ω ∈ Ω : ω ↦ |ψ⟩ ⊙ ∇(∫ₓ ∂τ · 𝔼)
+        psi_0 = self.quantum_state.copy()
+        
         for iteration in range(max_iter):
-            # Quantum tunneling probability
+            # Quantum tunneling probability with cypher-aligned decay
             tunneling_prob = np.exp(-iteration / max_iter)
-
+            
             if np.random.random() < tunneling_prob:
-                # Quantum tunneling - explore new regions
-                candidate = self._quantum_tunneling()
+                # Quantum tunneling - explore new regions using omega space
+                candidate = self._quantum_tunneling_cypher()
             else:
                 # Classical gradient descent with quantum fluctuations
-                candidate = self._quantum_gradient_step(cost_function)
-
+                candidate = self._quantum_gradient_step_cypher(cost_function)
+            
+            # Update kappa_ein (phase/cost parameter)
             cost = cost_function(candidate)
-
+            self.kappa_ein = cost
+            
             if cost < best_cost:
                 best_cost = cost
                 best_solution = candidate
-
+                
         return {
             'solution': best_solution,
             'cost': best_cost,
-            'quantum_entropy': self._calculate_quantum_entropy()
+            'quantum_entropy': self._calculate_quantum_entropy(),
+            'psi_0': psi_0,
+            'kappa_ein': self.kappa_ein,
+            'omega_mappings': self._get_omega_mappings()
         }
 
     def _quantum_tunneling(self) -> np.ndarray:
         """Quantum tunneling to escape local minima"""
         return np.random.normal(0, 1, self.num_qubits)
-
+    
+    def _quantum_tunneling_cypher(self) -> np.ndarray:
+        """Quantum tunneling with cypher-aligned omega space operations"""
+        # Use omega space for tunneling: ∀ω ∈ Ω : ω ↦ |ψ⟩
+        omega_idx = np.random.randint(0, len(self.omega_space))
+        omega_mapping = self.omega_space[omega_idx]
+        
+        # Apply psi operators for quantum state manipulation
+        nabla_effect = np.dot(omega_mapping, self.psi_operators['nabla'])
+        return nabla_effect + np.random.normal(0, 0.1, self.num_qubits)
+    
     def _quantum_gradient_step(self, cost_function) -> np.ndarray:
         """Gradient step with quantum fluctuations"""
         current = np.random.normal(0, 1, self.num_qubits)
         gradient = self._estimate_gradient(cost_function, current)
-
+        
         # Add quantum fluctuations
         quantum_noise = np.random.normal(0, 0.1, self.num_qubits)
         return current - 0.01 * gradient + quantum_noise
-
+    
+    def _quantum_gradient_step_cypher(self, cost_function) -> np.ndarray:
+        """Gradient step with cypher-aligned mathematical operations"""
+        current = np.random.normal(0, 1, self.num_qubits)
+        gradient = self._estimate_gradient(cost_function, current)
+        
+        # Apply cypher operations: ∇(∫ₓ ∂τ · 𝔼) ⇒ κₑⁱⁿ
+        nabla_gradient = np.dot(gradient, self.psi_operators['nabla'])
+        circlearrowright_effect = np.dot(nabla_gradient, self.psi_operators['circlearrowright'])
+        
+        # Add quantum fluctuations with bowtie operator
+        quantum_noise = np.random.normal(0, 0.1, self.num_qubits)
+        bowtie_noise = np.dot(quantum_noise, self.psi_operators['bowtie'])
+        
+        return current - 0.01 * circlearrowright_effect + bowtie_noise
+    
+    def _get_omega_mappings(self) -> Dict[str, np.ndarray]:
+        """Get omega space mappings for cypher notation"""
+        return {
+            'omega_space_shape': self.omega_space.shape,
+            'psi_operators_keys': list(self.psi_operators.keys()),
+            'kappa_ein': self.kappa_ein
+        }
+    
     def _calculate_quantum_entropy(self) -> float:
         """Calculate quantum entropy of the system"""
         probabilities = np.abs(self.quantum_state) ** 2
@@ -178,13 +235,19 @@ class QuantumInspiredOptimizer:
 
 class SwarmCognitiveNetwork:
     """Swarm intelligence for emergent network behavior"""
-
+    
     def __init__(self, num_agents: int = 50, search_space: Tuple[float, float] = (-10, 10)):
         self.num_agents = num_agents
         self.search_space = search_space
         self.agents = self._initialize_agents()
         self.global_best = None
         self.emergence_threshold = 0.7
+        
+        # Enhanced with cypher-aligned mathematical abstractions
+        self.lambda_bowtie_circlearrowright_kappa = self._initialize_lambda_operators()
+        self.phi_diversity_operators = self._initialize_phi_operators()
+        self.infinity_square_convergence = 0.0
+        self.aleph_0_scale = self.num_agents
 
     def _initialize_agents(self) -> List[Dict]:
         """Initialize swarm agents with random positions and velocities"""
@@ -202,23 +265,47 @@ class SwarmCognitiveNetwork:
                 'social_influence': 0.5
             })
         return agents
-
+    
+    def _initialize_lambda_operators(self) -> Dict[str, np.ndarray]:
+        """Initialize lambda operators for cypher notation: (Λ ⋈ ↻ κ)⊥"""
+        return {
+            'lambda': np.random.normal(0, 0.1, (self.num_agents, self.num_agents)),
+            'bowtie': np.random.normal(0, 0.1, (self.num_agents, self.num_agents)),
+            'circlearrowright': np.random.normal(0, 0.1, (self.num_agents, self.num_agents)),
+            'kappa': np.random.normal(0, 0.1, (self.num_agents, self.num_agents)),
+            'perp': np.random.normal(0, 0.1, (self.num_agents, self.num_agents))
+        }
+    
+    def _initialize_phi_operators(self) -> Dict[str, np.ndarray]:
+        """Initialize phi operators for diversity calculations: ∑⊥⟝⋯"""
+        return {
+            'phi_diversity': np.random.normal(0, 0.1, (self.num_agents,)),
+            'perp_sum': np.random.normal(0, 0.1, (self.num_agents,)),
+            'ellipsis': np.random.normal(0, 0.1, (self.num_agents,))
+        }
+    
     def optimize_swarm(self, objective_function, max_iterations: int = 100) -> Dict:
-        """Run swarm optimization with emergent behavior detection"""
-
+        """Run swarm optimization with emergent behavior detection and cypher-aligned operations"""
+        
         swarm_intelligence = []
         emergent_behaviors = []
-
+        
+        # Initialize with cypher notation: ∀ω ∈ Ω : ω ↦ ⟪ψ₀⩤ (Λ⋈↻κ)⊥
+        psi_0_initial = self._initialize_psi_0_cypher()
+        
         for iteration in range(max_iterations):
-            # Update each agent
+            # Update each agent with cypher-aligned operations
             for agent in self.agents:
                 cost = objective_function(agent['position'])
-
+                
+                # Apply cypher operations: (Λ⋈↻κ)⊥ ⋅ ╬δ → ⟟⟐ ∑⊥⟝⋯
+                agent = self._apply_cypher_operations(agent, iteration)
+                
                 # Update personal best
                 if cost < agent['personal_best_cost']:
                     agent['personal_best'] = agent['position'].copy()
                     agent['personal_best_cost'] = cost
-
+                
                 # Update global best
                 if self.global_best is None or cost < self.global_best['cost']:
                     self.global_best = {
@@ -226,24 +313,34 @@ class SwarmCognitiveNetwork:
                         'cost': cost,
                         'agent_id': agent['id']
                     }
-
-            # Emergent behavior detection
-            if self._detect_emergent_behavior():
-                emergent_behavior = self._capture_emergent_pattern()
+            
+            # Emergent behavior detection with cypher notation
+            if self._detect_emergent_behavior_cypher():
+                emergent_behavior = self._capture_emergent_pattern_cypher()
                 emergent_behaviors.append(emergent_behavior)
-
-            # Update velocities and positions
-            self._update_swarm_dynamics()
-
-            # Measure swarm intelligence
-            intelligence_metric = self._calculate_swarm_intelligence()
+            
+            # Update velocities and positions with cypher operations
+            self._update_swarm_dynamics_cypher()
+            
+            # Measure swarm intelligence with cypher metrics
+            intelligence_metric = self._calculate_swarm_intelligence_cypher()
             swarm_intelligence.append(intelligence_metric)
-
+            
+            # Update infinity square convergence: ≈ ∞▣
+            self.infinity_square_convergence = self._calculate_infinity_square_convergence()
+        
         return {
             'global_best': self.global_best,
             'swarm_intelligence': swarm_intelligence,
             'emergent_behaviors': emergent_behaviors,
-            'final_swarm_state': self._analyze_swarm_state()
+            'final_swarm_state': self._analyze_swarm_state(),
+            'cypher_metrics': {
+                'psi_0_initial': psi_0_initial,
+                'infinity_square_convergence': self.infinity_square_convergence,
+                'aleph_0_scale': self.aleph_0_scale,
+                'lambda_operators': self.lambda_bowtie_circlearrowright_kappa,
+                'phi_operators': self.phi_diversity_operators
+            }
         }
 
     def _detect_emergent_behavior(self) -> bool:
