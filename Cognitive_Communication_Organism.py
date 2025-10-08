@@ -453,12 +453,19 @@ class SwarmCognitiveNetwork:
 
 class NeuromorphicProcessor:
     """Neuromorphic computing interface for cognitive tasks"""
-
+    
     def __init__(self, num_neurons: int = 1000):
         self.num_neurons = num_neurons
         self.neuron_states = self._initialize_neurons()
         self.synaptic_weights = self._initialize_synapses()
         self.spike_history = []
+        
+        # Enhanced with cypher-aligned mathematical abstractions
+        self.izhikevich_params = self._initialize_izhikevich_params()
+        self.std_plasticity = self._initialize_std_plasticity()
+        self.network_entropy_tracker = self._initialize_entropy_tracker()
+        self.criticality_analyzer = self._initialize_criticality_analyzer()
+        self.quantum_neural_interface = self._initialize_quantum_interface()
 
     def _initialize_neurons(self) -> Dict:
         """Initialize spiking neuron states"""
@@ -480,33 +487,103 @@ class NeuromorphicProcessor:
                 weights[i, neighbor] = np.random.normal(0.5, 0.1)
 
         return weights
-
+    
+    def _initialize_izhikevich_params(self) -> Dict[str, np.ndarray]:
+        """Initialize Izhikevich neuron parameters for cypher notation: V_n(t) = f(V_n, U_n, I_syn)"""
+        return {
+            'a': np.random.uniform(0.02, 0.1, self.num_neurons),  # Recovery time constant
+            'b': np.random.uniform(0.2, 0.3, self.num_neurons),  # Sensitivity of recovery variable
+            'c': np.random.uniform(-65, -50, self.num_neurons),  # After-spike reset value
+            'd': np.random.uniform(2, 8, self.num_neurons),      # After-spike reset of recovery variable
+            'I_ext': np.zeros(self.num_neurons)  # External current
+        }
+    
+    def _initialize_std_plasticity(self) -> Dict[str, float]:
+        """Initialize STDP (Spike-Timing Dependent Plasticity) parameters"""
+        return {
+            'A_plus': 0.01,    # LTP amplitude
+            'A_minus': 0.012,  # LTD amplitude
+            'tau_plus': 20.0,  # LTP time constant (ms)
+            'tau_minus': 20.0, # LTD time constant (ms)
+            'W_max': 1.0,      # Maximum weight
+            'W_min': 0.0       # Minimum weight
+        }
+    
+    def _initialize_entropy_tracker(self) -> Dict[str, Any]:
+        """Initialize network entropy tracking for cypher notation: H_N(t) = -∑p_i(t)log p_i(t)"""
+        return {
+            'firing_rates': np.zeros(self.num_neurons),
+            'entropy_history': [],
+            'probability_distribution': np.ones(self.num_neurons) / self.num_neurons
+        }
+    
+    def _initialize_criticality_analyzer(self) -> Dict[str, Any]:
+        """Initialize criticality analysis for cypher notation: χ = ⟨avalanche_size⟩/⟨avalanche_duration⟩^α"""
+        return {
+            'avalanche_sizes': [],
+            'avalanche_durations': [],
+            'criticality_exponent': 1.5,  # α ≈ 3/2 for critical state
+            'criticality_threshold': 0.1
+        }
+    
+    def _initialize_quantum_interface(self) -> Dict[str, np.ndarray]:
+        """Initialize quantum-neural interface for cypher notation: Ψ_neuron → quantum states"""
+        return {
+            'quantum_state_mapping': np.random.normal(0, 0.1, (self.num_neurons, 4)),  # 4-qubit mapping
+            'entanglement_matrix': np.random.normal(0, 0.1, (self.num_neurons, self.num_neurons)),
+            'quantum_coherence': np.zeros(self.num_neurons)
+        }
+    
     def process_spiking_input(self, input_spikes: np.ndarray, timesteps: int = 100) -> Dict:
-        """Process input through neuromorphic network"""
-
+        """Process input through neuromorphic network with cypher-aligned operations"""
+        
         outputs = []
         spike_trains = []
-
+        entropy_history = []
+        criticality_history = []
+        
+        # Initialize with cypher notation: ∀n ∈ N : n ↦ V_n(t) = f(V_n, U_n, I_syn)
+        psi_neuron_initial = self._initialize_psi_neuron_cypher()
+        
         for t in range(timesteps):
-            # Update neuron states
-            self._update_neuron_dynamics(input_spikes)
-
-            # Detect spikes
-            spikes = self._detect_spikes()
+            # Update neuron states with Izhikevich model
+            self._update_izhikevich_dynamics(input_spikes, t)
+            
+            # Detect spikes with cypher notation: spike condition
+            spikes = self._detect_spikes_cypher()
             spike_trains.append(spikes)
-
+            
             # Store output from output neurons (last 100 neurons)
             output_activity = np.mean(spikes[-100:])
             outputs.append(output_activity)
-
-            # Update synaptic plasticity
-            self._update_synaptic_plasticity(spikes)
-
+            
+            # Update synaptic plasticity with STDP
+            self._update_std_plasticity(spikes, t)
+            
+            # Calculate network entropy: H_N(t) = -∑p_i(t)log p_i(t)
+            entropy = self._calculate_network_entropy_cypher()
+            entropy_history.append(entropy)
+            
+            # Assess criticality: χ = ⟨avalanche_size⟩/⟨avalanche_duration⟩^α
+            criticality = self._assess_criticality_cypher()
+            criticality_history.append(criticality)
+            
+            # Update quantum-neural interface
+            self._update_quantum_neural_interface(spikes, t)
+        
         return {
             'output_activity': outputs,
             'spike_trains': spike_trains,
-            'network_entropy': self._calculate_network_entropy(),
-            'criticality_measure': self._assess_criticality()
+            'network_entropy': entropy_history,
+            'criticality_measure': criticality_history,
+            'cypher_metrics': {
+                'psi_neuron_initial': psi_neuron_initial,
+                'izhikevich_params': self.izhikevich_params,
+                'std_plasticity': self.std_plasticity,
+                'quantum_interface': self.quantum_neural_interface,
+                'final_entropy': entropy_history[-1] if entropy_history else 0.0,
+                'final_criticality': criticality_history[-1] if criticality_history else 0.0
+            }
         }
 
     def _update_neuron_dynamics(self, input_currents: np.ndarray):
