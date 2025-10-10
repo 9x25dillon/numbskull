@@ -1,0 +1,37 @@
+# Requirements for Holographic Similarity System
+# Deep Mathematical Structure for Cognitive Network Protocols
+
+# Core dependencies
+numpy>=1.21.0
+scipy>=1.7.0
+asyncio
+logging
+typing
+dataclasses
+json
+time
+pathlib
+threading
+concurrent.futures
+
+# Mathematical and scientific computing
+sympy>=1.9.0
+scikit-learn>=1.0.0
+
+# Optional: Advanced mathematical libraries
+# numba>=0.56.0  # For JIT compilation
+# cupy>=10.0.0   # For GPU acceleration (optional)
+
+# Testing dependencies
+pytest>=6.0.0
+pytest-asyncio>=0.18.0
+
+# Development dependencies
+# black>=22.0.0
+# flake8>=4.0.0
+# mypy>=0.950
+
+# Integration with existing pipeline
+# (These should already be installed from the main requirements.txt)
+# httpx>=0.24.0
+# aiohttp>=3.8.0
