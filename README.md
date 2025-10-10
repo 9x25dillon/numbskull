@@ -3,118 +3,196 @@
 A sophisticated implementation of quantum-inspired optimization protocols, swarm intelligence, neuromorphic processing, and holographic memory systems for emergent cognitive networks.
 
 ## Overview
+# Enhanced Dual LLM WaveCaster with TA ULS Integration
+
+A sophisticated system combining Two-level Trans-Algorithmic Universal Learning System (TA ULS) architecture with dual LLM orchestration, neuro-symbolic adaptive reflection, and advanced signal processing for intelligent waveform generation.
+
+## 🚀 Features
 
 This project implements a comprehensive framework for orchestrating emergent technologies using advanced mathematical abstractions inspired by quantum mechanics, cognitive science, and complex systems theory. The system integrates multiple protocols to create a unified emergent cognitive network capable of adaptive learning and pattern formation.
 
-## Key Components
+1. **TA ULS Transformer Architecture** (`tauls_transformer.py`)
+   - Kinetic Force Principle (KFP) layers for gradient-based optimization
+   - Two-level control system (meta-control + automatic control)
+   - Entropy regulation based on environmental stress
+   - Enhanced transformer blocks with stability monitoring
 
-### 1. Quantum Optimization Protocol
-- **Quantum State Initialization**: Creates superposition states for optimization
-- **Quantum Annealing Transform**: Implements annealing dynamics for global optimization
-- **Unitary Rotation & Coupling**: Quantum operators for state evolution
+2. **Dual LLM Orchestration** (`dual_llm_orchestrator.py`)
+   - Local LLM for final inference and decision making
+   - Remote LLM for resource-only summarization
+   - Intelligent coordination between systems
+   - Multiple backend support (OpenAI, llama.cpp, TextGen WebUI)
 
-### 2. Swarm Cognitive Network Protocol
-- **Emergent Coordination Dynamics**: Multi-agent coordination mechanisms
-- **Swarm Intelligence Metrics**: Diversity and convergence measures
-- **Pattern Formation**: Self-organizing pattern generation
+3. **Neuro-Symbolic Adaptive Engine** (`neuro_symbolic_engine.py`)
+   - Multiple analytical modules (entropy, reflection, matrix transformation)
+   - Feature extraction and neural-symbolic fusion
+   - Reinforcement learning for adaptive decision making
+   - Reflective database for self-tuning and memory
 
-### 3. Neuromorphic Processor Dynamics
-- **Spiking Neural Fields**: Izhikevich-style neural dynamics
-- **Synaptic Plasticity**: STDP-based learning mechanisms
-- **Criticality Analysis**: Neural network criticality assessment
+4. **Advanced Signal Processing** (`signal_processing.py`)
+   - Multiple modulation schemes (BFSK, BPSK, QPSK, QAM16, OFDM, DSSS)
+   - Forward Error Correction (Hamming, Reed-Solomon, LDPC, Turbo)
+   - Framing, security (AES-GCM), and watermarking
+   - Audio and IQ signal generation with visualization
 
-### 4. Holographic Data Engine Protocol
-- **Holographic Encoding**: Phase-modulated data representation
-- **Associative Memory**: Content-addressable memory systems
-- **Recall Transform**: Pattern reconstruction mechanisms
+5. **Integrated System** (`enhanced_wavecaster.py`)
+   - Comprehensive CLI interface
+   - Configuration management
+   - Component integration and orchestration
 
-### 5. Morphogenetic System Protocol
-- **Reaction-Diffusion Systems**: Turing pattern formation
-- **Field Dynamics**: Spatial pattern evolution
-- **Pattern Completion**: Target pattern matching
+## 📦 Installation
 
-### 6. Quantum Cognitive Processor
-- **Distributed Quantum Inference**: Multi-state quantum processing
-- **Quantum Circuit Layers**: Rotation and entanglement operations
-- **Entanglement Distribution**: Quantum correlation networks
-
-### 7. Holographic Memory System
-- **Fractal Encoding**: Multi-scale data representation
-- **Quantum Storage**: Quantum state-based memory
-- **Memory Reconstruction**: Pattern recall and reconstruction
-
-## Mathematical Framework
-
-The system implements advanced mathematical abstractions using symbolic transforms:
-
-```python
-# Quantum Operators
-"⊙" -> "TensorProduct"
-"∇" -> "GradientEvolution" 
-"⋉" -> "ConvolutionJoin"
-"↻" -> "UnitaryRotation"
-"╬" -> "QuantumCoupling"
-
-# Emergence Operators
-"⟟⟐" -> "EmergentSummation"
-"∑⊥^φ" -> "DiversityConvergence" 
-"□∞" -> "OptimalConvergence"
-"⟨∣⟩→∘" -> "PatternCompletion"
-```
-
-## Installation
+### Requirements
 
 ```bash
+# Core dependencies (required)
+pip install numpy scipy torch
+
+# Optional dependencies for full functionality
+pip install matplotlib sounddevice soundfile requests pycryptodome
+
+# Or install all at once
 pip install -r requirements.txt
 ```
 
-## Usage
+### Quick Setup
 
-### Basic Usage
-
-```python
-from emergent_cognitive_network import execute_emergent_protocol
-import numpy as np
-
-# Create input data
-input_data = np.random.uniform(-1, 1, 10)
-
-# Execute emergent protocol
-results = execute_emergent_protocol(input_data, priority="HighPriority")
-
-# Access results
-quantum_results = results['quantum_optimization']
-swarm_results = results['swarm_cognitive']
-emergence_metrics = results['emergence_metrics']
+```bash
+git clone <repository>
+cd enhanced-wavecaster
+pip install -r requirements.txt
 ```
 
-### Advanced Usage
+## 🎯 Quick Start
 
-```python
-from emergent_cognitive_network import *
-from emergent_visualization import EmergentVisualization
+### 1. Direct Text Modulation
 
-# Create custom orchestrator
-energy_levels = np.random.uniform(0, 1, 20)
-technology_params = {
-    'quantum_coupling': 0.7,
-    'swarm_phi': 0.6,
-    'neuromorphic_threshold': 0.15,
-    'holographic_phase': 0.4,
-    'morphogenetic_growth': 0.25
+```bash
+# Basic QPSK modulation
+python enhanced_wavecaster.py modulate --text "Hello, World!" --scheme qpsk --wav
+
+# With security features
+python enhanced_wavecaster.py modulate \
+    --text "Secure message" \
+    --scheme ofdm \
+    --password "secret123" \
+    --watermark "my_watermark" \
+    --fec hamming74 \
+    --wav --iq
+```
+
+### 2. LLM-Orchestrated Casting
+
+```bash
+# Using local LLM (llama.cpp server)
+python enhanced_wavecaster.py cast \
+    --prompt "Summarize the key technical points" \
+    --resource-file document.txt \
+    --scheme qpsk \
+    --local-url http://localhost:8080 \
+    --adaptive \
+    --wav
+
+# Using remote LLM with local fallback
+python enhanced_wavecaster.py cast \
+    --prompt "Create a technical brief" \
+    --resource-file specs.pdf \
+    --resource-text "Additional context here" \
+    --remote-url https://api.openai.com \
+    --remote-key $OPENAI_API_KEY \
+    --scheme ofdm \
+    --adaptive
+```
+
+### 3. Adaptive Learning
+
+```bash
+# Train the adaptive system
+python enhanced_wavecaster.py learn \
+    --texts "Message 1" "Message 2" "Message 3" \
+    --episodes 20 \
+    --db-path learning_db.json
+```
+
+### 4. Component Demonstrations
+
+```bash
+# Demo all components
+python enhanced_wavecaster.py demo --component all
+
+# Demo specific components
+python enhanced_wavecaster.py demo --component tauls
+python enhanced_wavecaster.py demo --component neuro-symbolic
+python enhanced_wavecaster.py demo --component signal-processing
+```
+
+### 5. Text Analysis
+
+```bash
+# Analyze text with neuro-symbolic engine
+python enhanced_wavecaster.py analyze \
+    --text "Complex technical document content..." \
+    --plot
+```
+
+## 🔧 Configuration
+
+### Configuration File
+
+Create a JSON configuration file:
+
+```json
+{
+  "db_path": "reflective_db.json",
+  "llm": {
+    "local": [
+      {
+        "base_url": "http://127.0.0.1:8080",
+        "mode": "llama-cpp",
+        "model": "local-model"
+      }
+    ],
+    "remote": {
+      "base_url": "https://api.openai.com",
+      "api_key": "your-api-key",
+      "model": "gpt-4o-mini"
+    },
+    "settings": {
+      "temperature": 0.7,
+      "max_tokens": 512,
+      "style": "concise"
+    }
+  },
+  "modulation": {
+    "sample_rate": 48000,
+    "symbol_rate": 1200,
+    "amplitude": 0.7
+  },
+  "security": {
+    "password": null,
+    "watermark": null,
+    "hmac_key": null
+  }
 }
-
-orchestrator = EmergentOrchestrator(energy_levels, technology_params)
-results = orchestrator.execute_emergent_protocol(input_data)
-
-# Visualize results
-viz = EmergentVisualization()
-viz.plot_quantum_optimization_dynamics(results['quantum_optimization'])
-viz.plot_swarm_intelligence_patterns(results['swarm_cognitive'])
-viz.create_interactive_dashboard(results)
 ```
 
-### Individual Protocol Usage
+Use with: `--config config.json`
+
+## 🧪 Testing
+
+Run the comprehensive test suite:
+
+```bash
+python test_system.py
+```
+
+Or use pytest:
+
+```bash
+pytest test_system.py -v
+```
+
+## 📊 Architecture Overview
 
 ```python
 # Quantum Optimization
@@ -197,14 +275,24 @@ Contributions are welcome! Please see the contributing guidelines for details on
 - Testing requirements
 - Documentation standards
 - Pull request process
+MIT License - see LICENSE file for details.
 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+This system integrates concepts from:
+- Transformer architectures and attention mechanisms
+- Neuro-symbolic AI and hybrid reasoning systems
+- Digital signal processing and communication theory
+- Reinforcement learning and adaptive systems
+- Information theory and error correction coding
 
 ## Citation
 
-If you use this code in your research, please cite:
+For questions, issues, or contributions:
+- Create an issue on GitHub
+- Check the test suite for usage examples
+- Review the comprehensive docstrings in each module
 
 ```bibtex
 @software{emergent_cognitive_network,
