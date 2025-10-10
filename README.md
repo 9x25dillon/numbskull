@@ -1,49 +1,224 @@
-# Emergent Cognitive Network - Advanced Mathematical Abstraction
+# Numbskull: Unified Cognitive Architecture
 
-A sophisticated implementation of quantum-inspired optimization protocols, swarm intelligence, neuromorphic processing, and holographic memory systems for emergent cognitive networks.
+A comprehensive system integrating multiple advanced AI architectures including:
+- **Enhanced Dual LLM WaveCaster with TA ULS Integration** - Intelligent waveform generation and signal processing
+- **Emergent Cognitive Network** - Quantum-inspired optimization and swarm intelligence protocols
 
 ## Overview
 
-This project implements a comprehensive framework for orchestrating emergent technologies using advanced mathematical abstractions inspired by quantum mechanics, cognitive science, and complex systems theory. The system integrates multiple protocols to create a unified emergent cognitive network capable of adaptive learning and pattern formation.
+This project implements a unified framework combining two powerful systems:
 
-## Key Components
+1. **Two-level Trans-Algorithmic Universal Learning System (TA ULS)** with dual LLM orchestration, neuro-symbolic adaptive reflection, and advanced signal processing
+2. **Emergent Cognitive Network** using advanced mathematical abstractions inspired by quantum mechanics, cognitive science, and complex systems theory
 
-### 1. Quantum Optimization Protocol
+---
+
+## Part 1: Enhanced Dual LLM WaveCaster with TA ULS Integration
+
+A sophisticated system for intelligent waveform generation with advanced neural architectures.
+
+### 🚀 Features
+
+1. **TA ULS Transformer Architecture** (`tauls_transformer.py`)
+   - Kinetic Force Principle (KFP) layers for gradient-based optimization
+   - Two-level control system (meta-control + automatic control)
+   - Entropy regulation based on environmental stress
+   - Enhanced transformer blocks with stability monitoring
+
+2. **Dual LLM Orchestration** (`dual_llm_orchestrator.py`)
+   - Local LLM for final inference and decision making
+   - Remote LLM for resource-only summarization
+   - Intelligent coordination between systems
+   - Multiple backend support (OpenAI, llama.cpp, TextGen WebUI)
+
+3. **Neuro-Symbolic Adaptive Engine** (`neuro_symbolic_engine.py`)
+   - Multiple analytical modules (entropy, reflection, matrix transformation)
+   - Feature extraction and neural-symbolic fusion
+   - Reinforcement learning for adaptive decision making
+   - Reflective database for self-tuning and memory
+
+4. **Advanced Signal Processing** (`signal_processing.py`)
+   - Multiple modulation schemes (BFSK, BPSK, QPSK, QAM16, OFDM, DSSS)
+   - Forward Error Correction (Hamming, Reed-Solomon, LDPC, Turbo)
+   - Framing, security (AES-GCM), and watermarking
+   - Audio and IQ signal generation with visualization
+
+5. **Integrated System** (`enhanced_wavecaster.py`)
+   - Comprehensive CLI interface
+   - Configuration management
+   - Component integration and orchestration
+
+### 🎯 Quick Start - WaveCaster
+
+#### 1. Direct Text Modulation
+
+```bash
+# Basic QPSK modulation
+python enhanced_wavecaster.py modulate --text "Hello, World!" --scheme qpsk --wav
+
+# With security features
+python enhanced_wavecaster.py modulate \
+    --text "Secure message" \
+    --scheme ofdm \
+    --password "secret123" \
+    --watermark "my_watermark" \
+    --fec hamming74 \
+    --wav --iq
+```
+
+#### 2. LLM-Orchestrated Casting
+
+```bash
+# Using local LLM (llama.cpp server)
+python enhanced_wavecaster.py cast \
+    --prompt "Summarize the key technical points" \
+    --resource-file document.txt \
+    --scheme qpsk \
+    --local-url http://localhost:8080 \
+    --adaptive \
+    --wav
+
+# Using remote LLM with local fallback
+python enhanced_wavecaster.py cast \
+    --prompt "Create a technical brief" \
+    --resource-file specs.pdf \
+    --resource-text "Additional context here" \
+    --remote-url https://api.openai.com \
+    --remote-key $OPENAI_API_KEY \
+    --scheme ofdm \
+    --adaptive
+```
+
+#### 3. Adaptive Learning
+
+```bash
+# Train the adaptive system
+python enhanced_wavecaster.py learn \
+    --texts "Message 1" "Message 2" "Message 3" \
+    --episodes 20 \
+    --db-path learning_db.json
+```
+
+#### 4. Component Demonstrations
+
+```bash
+# Demo all components
+python enhanced_wavecaster.py demo --component all
+
+# Demo specific components
+python enhanced_wavecaster.py demo --component tauls
+python enhanced_wavecaster.py demo --component neuro-symbolic
+python enhanced_wavecaster.py demo --component signal-processing
+```
+
+#### 5. Text Analysis
+
+```bash
+# Analyze text with neuro-symbolic engine
+python enhanced_wavecaster.py analyze \
+    --text "Complex technical document content..." \
+    --plot
+```
+
+### 🔧 Configuration - WaveCaster
+
+Create a JSON configuration file:
+
+```json
+{
+  "db_path": "reflective_db.json",
+  "llm": {
+    "local": [
+      {
+        "base_url": "http://127.0.0.1:8080",
+        "mode": "llama-cpp",
+        "model": "local-model"
+      }
+    ],
+    "remote": {
+      "base_url": "https://api.openai.com",
+      "api_key": "your-api-key",
+      "model": "gpt-4o-mini"
+    },
+    "settings": {
+      "temperature": 0.7,
+      "max_tokens": 512,
+      "style": "concise"
+    }
+  },
+  "modulation": {
+    "sample_rate": 48000,
+    "symbol_rate": 1200,
+    "amplitude": 0.7
+  },
+  "security": {
+    "password": null,
+    "watermark": null,
+    "hmac_key": null
+  }
+}
+```
+
+Use with: `--config config.json`
+
+### 🧪 Testing - WaveCaster
+
+Run the comprehensive test suite:
+
+```bash
+python test_system.py
+```
+
+Or use pytest:
+
+```bash
+pytest test_system.py -v
+```
+
+---
+
+## Part 2: Emergent Cognitive Network - Advanced Mathematical Abstraction
+
+A sophisticated implementation of quantum-inspired optimization protocols, swarm intelligence, neuromorphic processing, and holographic memory systems.
+
+### Key Components
+
+#### 1. Quantum Optimization Protocol
 - **Quantum State Initialization**: Creates superposition states for optimization
 - **Quantum Annealing Transform**: Implements annealing dynamics for global optimization
 - **Unitary Rotation & Coupling**: Quantum operators for state evolution
 
-### 2. Swarm Cognitive Network Protocol
+#### 2. Swarm Cognitive Network Protocol
 - **Emergent Coordination Dynamics**: Multi-agent coordination mechanisms
 - **Swarm Intelligence Metrics**: Diversity and convergence measures
 - **Pattern Formation**: Self-organizing pattern generation
 
-### 3. Neuromorphic Processor Dynamics
+#### 3. Neuromorphic Processor Dynamics
 - **Spiking Neural Fields**: Izhikevich-style neural dynamics
 - **Synaptic Plasticity**: STDP-based learning mechanisms
 - **Criticality Analysis**: Neural network criticality assessment
 
-### 4. Holographic Data Engine Protocol
+#### 4. Holographic Data Engine Protocol
 - **Holographic Encoding**: Phase-modulated data representation
 - **Associative Memory**: Content-addressable memory systems
 - **Recall Transform**: Pattern reconstruction mechanisms
 
-### 5. Morphogenetic System Protocol
+#### 5. Morphogenetic System Protocol
 - **Reaction-Diffusion Systems**: Turing pattern formation
 - **Field Dynamics**: Spatial pattern evolution
 - **Pattern Completion**: Target pattern matching
 
-### 6. Quantum Cognitive Processor
+#### 6. Quantum Cognitive Processor
 - **Distributed Quantum Inference**: Multi-state quantum processing
 - **Quantum Circuit Layers**: Rotation and entanglement operations
 - **Entanglement Distribution**: Quantum correlation networks
 
-### 7. Holographic Memory System
+#### 7. Holographic Memory System
 - **Fractal Encoding**: Multi-scale data representation
 - **Quantum Storage**: Quantum state-based memory
 - **Memory Reconstruction**: Pattern recall and reconstruction
 
-## Mathematical Framework
+### Mathematical Framework
 
 The system implements advanced mathematical abstractions using symbolic transforms:
 
@@ -62,15 +237,9 @@ The system implements advanced mathematical abstractions using symbolic transfor
 "⟨∣⟩→∘" -> "PatternCompletion"
 ```
 
-## Installation
+### Usage - Emergent Cognitive Network
 
-```bash
-pip install -r requirements.txt
-```
-
-## Usage
-
-### Basic Usage
+#### Basic Usage
 
 ```python
 from emergent_cognitive_network import execute_emergent_protocol
@@ -88,7 +257,7 @@ swarm_results = results['swarm_cognitive']
 emergence_metrics = results['emergence_metrics']
 ```
 
-### Advanced Usage
+#### Advanced Usage
 
 ```python
 from emergent_cognitive_network import *
@@ -114,7 +283,7 @@ viz.plot_swarm_intelligence_patterns(results['swarm_cognitive'])
 viz.create_interactive_dashboard(results)
 ```
 
-### Individual Protocol Usage
+#### Individual Protocol Usage
 
 ```python
 # Quantum Optimization
@@ -132,6 +301,48 @@ theta_params = np.random.uniform(0, 1, 10)
 neuromorphic = NeuromorphicDynamics(neural_field, theta_params)
 neuromorphic_results = neuromorphic.execute_neuromorphic_protocol()
 ```
+
+---
+
+## 📦 Installation
+
+### Requirements
+
+```bash
+# Core dependencies (required)
+pip install numpy scipy torch
+
+# Optional dependencies for full functionality
+pip install matplotlib sounddevice soundfile requests pycryptodome seaborn plotly pandas scikit-learn
+
+# Or install all at once
+pip install -r requirements.txt
+```
+
+### Quick Setup
+
+```bash
+git clone <repository>
+cd numbskull
+pip install -r requirements.txt
+```
+
+---
+
+## 📊 Architecture Overview
+
+This unified system combines:
+- **Transformer architectures and attention mechanisms**
+- **Neuro-symbolic AI and hybrid reasoning systems**
+- **Digital signal processing and communication theory**
+- **Reinforcement learning and adaptive systems**
+- **Information theory and error correction coding**
+- **Quantum mechanics**: Superposition, entanglement, and unitary evolution
+- **Complex systems**: Emergence, self-organization, and criticality
+- **Dynamical systems**: Attractors, bifurcations, and pattern formation
+- **Cognitive science**: Neural networks, learning, and adaptation
+
+---
 
 ## Visualization
 
@@ -156,6 +367,8 @@ The system includes comprehensive visualization tools:
 - Pattern formation dynamics
 - Network adaptation processes
 
+---
+
 ## Example Results
 
 The system generates comprehensive metrics including:
@@ -166,15 +379,7 @@ The system generates comprehensive metrics including:
 - **Holographic Coherence**: Memory system coherence
 - **Morphogenetic Convergence**: Pattern formation convergence
 
-## Mathematical Background
-
-The implementation is based on advanced mathematical concepts:
-
-1. **Quantum Mechanics**: Superposition, entanglement, and unitary evolution
-2. **Complex Systems**: Emergence, self-organization, and criticality
-3. **Information Theory**: Entropy, mutual information, and holographic principles
-4. **Dynamical Systems**: Attractors, bifurcations, and pattern formation
-5. **Cognitive Science**: Neural networks, learning, and adaptation
+---
 
 ## Performance Considerations
 
@@ -183,12 +388,16 @@ The implementation is based on advanced mathematical concepts:
 - **Computational Complexity**: Polynomial time complexity for most operations
 - **Parallel Processing**: Support for distributed computing
 
+---
+
 ## Future Extensions
 
 - **Quantum Machine Learning**: Integration with quantum ML algorithms
 - **Distributed Computing**: Multi-node processing capabilities
 - **Real-time Processing**: Streaming data processing support
 - **Hardware Acceleration**: GPU and quantum hardware integration
+
+---
 
 ## Contributing
 
@@ -198,22 +407,28 @@ Contributions are welcome! Please see the contributing guidelines for details on
 - Documentation standards
 - Pull request process
 
+---
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
 
 ## Citation
 
 If you use this code in your research, please cite:
 
 ```bibtex
-@software{emergent_cognitive_network,
-  title={Emergent Cognitive Network - Advanced Mathematical Abstraction},
+@software{numbskull_unified_architecture,
+  title={Numbskull: Unified Cognitive Architecture},
   author={Your Name},
   year={2024},
-  url={https://github.com/yourusername/emergent-cognitive-network}
+  url={https://github.com/yourusername/numbskull}
 }
 ```
+
+---
 
 ## Acknowledgments
 
@@ -221,3 +436,12 @@ If you use this code in your research, please cite:
 - Complex systems researchers for emergence principles
 - Cognitive science community for neural network insights
 - Open source contributors for supporting libraries
+
+---
+
+## Support
+
+For questions, issues, or contributions:
+- Create an issue on GitHub
+- Check the test suite for usage examples
+- Review the comprehensive docstrings in each module
