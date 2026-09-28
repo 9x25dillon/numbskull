@@ -124,6 +124,17 @@ class QuantumOptimizationProtocol:
         return np.std(recent_values) < 1e-6
 
 
+# The class above is kept for reference only: its annealing transform builds a
+# 2x2 rotation for an n-dimensional state and never uses the objective, so it
+# cannot optimise. When the emergentnet package is installed
+# (pip install -e packages/emergentnet), the name is rebound to a working
+# quantum-behaved PSO implementation with the same constructor/optimize API.
+try:
+    from emergentnet.compat import QuantumOptimizationProtocol  # noqa: F811
+except ImportError:  # pragma: no cover
+    pass
+
+
 class SwarmCognitiveProtocol:
     """
     Swarm Cognitive Network Protocol
@@ -200,7 +211,8 @@ class SwarmCognitiveProtocol:
         Self-organizing pattern generation
         """
         # Calculate gradient of coordination matrix
-        grad_coordination = np.gradient(coordination_matrix)
+        # np.gradient on a 2-D array returns (d/drow, d/dcol); use the magnitude
+        grad_coordination = np.hypot(*np.gradient(coordination_matrix))
         
         # Pattern formation based on coordination and gradient
         pattern = np.zeros_like(coordination_matrix)

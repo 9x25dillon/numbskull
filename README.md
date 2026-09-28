@@ -4,6 +4,25 @@ A comprehensive system integrating multiple advanced AI architectures including:
 - **Enhanced Dual LLM WaveCaster with TA ULS Integration** - Intelligent waveform generation and signal processing
 - **Emergent Cognitive Network** - Quantum-inspired optimization and swarm intelligence protocols
 
+## Packages (v0.2): production code paths
+
+The two major parts are now independent, tested, installable packages under `packages/`. The root-level modules below are the original prototypes.
+
+| Package | What it does | Docs |
+|---|---|---|
+| [`wavecaster`](packages/wavecaster) | Real-time software modem. FEC: Reed–Solomon, LDPC, turbo, K=7 convolutional, Hamming. Modulation: extensible constellations and waveforms (PSK/QAM/APSK, OFDM, DSSS, FSK, custom via JSON or plugins). Burst PHY with CFO-tolerant acquisition. Radio I/O: **USRP (UHD)**, **SoapySDR**, **sound-card transceivers with PTT**, **KISS TNCs**, IQ/WAV files. Streaming transport for audio. | [README](packages/wavecaster/README.md) |
+| [`emergentnet`](packages/emergentnet) | Optimisers that actually compute: exact, simulated annealing, parallel tempering, simulated quantum annealing (PIMC), statevector QAOA, QPSO/PSO. **Holographic (HRR) memory for RAG** with a GPU-accelerated persistent vector store. | [README](packages/emergentnet/README.md) |
+
+```bash
+pip install -e packages/wavecaster -e packages/emergentnet
+wavecaster info                                               # modems, codecs, profiles, attached SDRs/sound cards
+wavecaster tx --profile sdr-narrow --device uhd:type=b200 --freq 915e6 --text "hello"
+emergentnet solve --sk 20 --method sqa
+pytest packages/*/tests                                       # 97 tests
+```
+
+Architecture, contracts, measured performance and roadmap: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
 ## Overview
 
 This project implements a unified framework combining two powerful systems:
