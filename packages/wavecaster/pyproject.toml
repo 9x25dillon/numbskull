@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wavecaster"
+version = "0.2.0"
+description = "Software-defined modem: FEC (RS/LDPC/turbo/conv), extensible modulation, burst PHY, SDR/sound-card/KISS radio I/O"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "9x25dillon" }]
+dependencies = ["numpy>=1.22", "scipy>=1.8"]
+
+[project.optional-dependencies]
+audio = ["sounddevice>=0.4"]
+serial = ["pyserial>=3.5"]
+# SoapySDR and UHD python bindings ship with their system packages
+# (apt: python3-soapysdr / python3-uhd; conda-forge: soapysdr, uhd).
+test = ["pytest>=7"]
+
+[project.scripts]
+wavecaster = "wavecaster.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
